@@ -1,6 +1,6 @@
 # Phaser Typescript Boilerplate
 
-Unopinionated (mostly) package containing bare bones Phaser game, containing:
+A version of my Portfolio / CV in the form of a classic RPG level.
 
 * Phaser (2.4.4)
 * Typescript
