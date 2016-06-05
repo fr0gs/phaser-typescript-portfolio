@@ -1,0 +1,30 @@
+{
+  "name": "phaser-typescript-portfolio",
+  "version": "1.0.0",
+  "description": "RPG interactive portfolio with Phaser and Typescript",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fr0gs/phaser-typescript-portfolio.git"
+  },
+  "author": "Esteban Sastre",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fr0gs/phaser-typescript-portfolio/issues"
+  },
+  "homepage": "https://github.com/fr0gs/phaser-typescript-portfolio/#readme",
+  "dependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-clean": "^0.7.0",
+    "grunt-contrib-copy": "^0.8.2",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-ts": "^5.2.0"
+  },
+  "devDependencies": {
+    "prompt": "^0.2.14",
+    "rimraf": "^2.5.1"
+  }
+}

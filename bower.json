@@ -1,0 +1,28 @@
+{
+  "name": "phaser-typescript-portfolio",
+  "version": "1.0.0",
+  "homepage": "https://github.com/fr0gs/phaser-typescript-portfolio.git",
+  "authors": [
+    "esteban sastre <mail@estebansastre.com>"
+  ],
+  "description": "RPG interactive portfolio with Phaser and Typescript",
+  "moduleType": [
+    "amd"
+  ],
+  "keywords": [
+    "phaser",
+    "typescript",
+    "boilerplate"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "phaser": "~2.4.4"
+  }
+}
