@@ -19,6 +19,8 @@ var Portfolio;
                 this.map.addTilesetImage('PathAndObjects', 'pathandobjects');
                 this.ground = this.map.createLayer('ground');
                 this.ground.resizeWorld();
+                this.water = this.map.createLayer('water');
+                this.water.resizeWorld();
                 this.path = this.map.createLayer('path');
                 this.path.resizeWorld();
                 this.boats = this.map.createLayer('boats');
@@ -37,18 +39,45 @@ var Portfolio;
                 this.houses.resizeWorld();
                 this.decoration = this.map.createLayer('decoration');
                 this.decoration.resizeWorld();
+                this.map.setCollisionBetween(1, 100000, true, 'water');
+                this.map.setCollisionBetween(1, 100000, true, 'houses');
+                this.map.setCollisionBetween(1, 100000, true, 'decoration');
+                this.player = this.game.add.sprite(300, 200, 'player');
+                this.game.physics.arcade.enable(this.player);
+                this.player.animations.add('down', [0, 1, 2], 10, true);
+                this.player.animations.add('left', [12, 13, 14], 10, true);
+                this.player.animations.add('right', [24, 25, 26], 10, true);
+                this.player.animations.add('up', [36, 37, 38], 10, true);
+                this.player.body.collideWorldBounds = true;
                 this.cursors = this.game.input.keyboard.createCursorKeys();
             };
             Game.prototype.update = function () {
                 this.game.input.update();
-                if (this.cursors.down.isDown)
-                    console.log('down');
-                if (this.cursors.up.isDown)
-                    console.log('up');
-                if (this.cursors.left.isDown)
-                    console.log('left');
-                if (this.cursors.right.isDown)
-                    console.log('right');
+                this.game.physics.arcade.collide(this.player, this.water);
+                this.game.physics.arcade.collide(this.player, this.houses);
+                this.game.physics.arcade.collide(this.player, this.decoration);
+                this.player.body.velocity.x = 0;
+                this.player.body.velocity.y = 0;
+                if (this.cursors.down.isDown) {
+                    this.player.body.velocity.y = 150;
+                    this.player.animations.play('down', 1, true);
+                }
+                else if (this.cursors.up.isDown) {
+                    this.player.body.velocity.y = -150;
+                    this.player.animations.play('up', 1, true);
+                }
+                else if (this.cursors.left.isDown) {
+                    this.player.body.velocity.x = -150;
+                    this.player.animations.play('left', 1, true);
+                }
+                else if (this.cursors.right.isDown) {
+                    this.player.body.velocity.x = 150;
+                    this.player.animations.play('right', 1, true);
+                }
+                else {
+                    this.player.animations.stop();
+                    this.player.frame = 1;
+                }
             };
             return Game;
         }(Phaser.State));

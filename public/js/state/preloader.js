@@ -17,10 +17,12 @@ var Portfolio;
                 this.game.scale.pageAlignHorizontally = true;
                 this.game.scale.pageAlignVertically = true;
                 this.game.scale.refresh();
+                this.game.physics.startSystem(Phaser.Physics.ARCADE);
                 this.game.load.tilemap('portfolio', 'assets/portfolio.json', null, Phaser.Tilemap.TILED_JSON);
                 this.game.load.image('bluetown', 'assets/images/BlueTownv2_byLunarea.png');
                 this.game.load.image('markerpreset', 'assets/images/Market-Preset-byLunarea.png');
                 this.game.load.image('pathandobjects', 'assets/images/PathAndObjects.png');
+                this.game.load.spritesheet('player', 'assets/images/vx_chara03_a.png', 32, 48, 96);
             };
             Preloader.prototype.create = function () {
                 this.loadingBar.setFillPercent(100);

@@ -15,6 +15,10 @@ module Portfolio.State {
           this.game.scale.pageAlignVertically = true;
           this.game.scale.refresh();
 
+          // Start physics system.
+          this.game.physics.startSystem(Phaser.Physics.ARCADE);
+
+          // Load the map configuration.
           this.game.load.tilemap('portfolio', 'assets/portfolio.json', null, Phaser.Tilemap.TILED_JSON);
 
           /*
@@ -24,6 +28,9 @@ module Portfolio.State {
           this.game.load.image('bluetown', 'assets/images/BlueTownv2_byLunarea.png');
           this.game.load.image('markerpreset', 'assets/images/Market-Preset-byLunarea.png');
           this.game.load.image('pathandobjects', 'assets/images/PathAndObjects.png');
+
+          // Load the spritesheet with the character sprites.
+          this.game.load.spritesheet('player', 'assets/images/vx_chara03_a.png', 32, 48 , 96);
       }
 
       // Add logic to the loading bar and set the function to call when
