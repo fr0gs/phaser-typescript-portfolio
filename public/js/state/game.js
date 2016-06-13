@@ -13,6 +13,7 @@ var Portfolio;
                 _super.apply(this, arguments);
             }
             Game.prototype.create = function () {
+                this.antidoteCache = false;
                 this.map = this.game.add.tilemap('portfolio');
                 this.map.addTilesetImage('BlueTownv2_byLunarea', 'bluetown');
                 this.map.addTilesetImage('Market-Preset-byLunarea', 'markerpreset');
@@ -49,13 +50,17 @@ var Portfolio;
                 this.player.animations.add('right', [24, 25, 26], 10, true);
                 this.player.animations.add('up', [36, 37, 38], 10, true);
                 this.player.body.collideWorldBounds = true;
+                this.antidote = this.game.add.sprite(30, 180, 'antidote');
+                this.game.physics.arcade.enable(this.antidote);
                 this.cursors = this.game.input.keyboard.createCursorKeys();
+            };
+            Game.prototype.printInfo = function (first, second) {
+                if (this.antidoteCache === false) {
+                    this.antidoteCache = true;
+                }
             };
             Game.prototype.update = function () {
                 this.game.input.update();
-                this.game.physics.arcade.collide(this.player, this.water);
-                this.game.physics.arcade.collide(this.player, this.houses);
-                this.game.physics.arcade.collide(this.player, this.decoration);
                 this.player.body.velocity.x = 0;
                 this.player.body.velocity.y = 0;
                 if (this.cursors.down.isDown) {
@@ -78,6 +83,12 @@ var Portfolio;
                     this.player.animations.stop();
                     this.player.frame = 1;
                 }
+                this.game.physics.arcade.collide(this.player, this.water);
+                this.game.physics.arcade.collide(this.player, this.houses);
+                this.game.physics.arcade.collide(this.player, this.decoration);
+                var antidote = this.game.physics.arcade.overlap(this.player, this.antidote, this.printInfo, null, this);
+                if (!antidote)
+                    this.antidoteCache = false;
             };
             return Game;
         }(Phaser.State));

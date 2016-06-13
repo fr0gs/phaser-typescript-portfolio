@@ -5,6 +5,10 @@ module Portfolio.State {
   */
   export class Game extends Phaser.State {
     player: Phaser.Sprite;
+    antidote: Phaser.Sprite;
+    book: Phaser.Sprite;
+    feather: Phaser.Sprite;
+    mymap: Phaser.Sprite;
     map: Phaser.Tilemap;
     ground: Phaser.TilemapLayer;
     water: Phaser.TilemapLayer;
@@ -18,8 +22,10 @@ module Portfolio.State {
     houses: Phaser.TilemapLayer;
     decoration: Phaser.TilemapLayer;
     cursors: Phaser.CursorKeys;
+    antidoteCache: boolean;
 
     create() {
+      this.antidoteCache = false;
 
       // load the tilemap information previously preloaded.
       this.map = this.game.add.tilemap('portfolio');
@@ -68,30 +74,41 @@ module Portfolio.State {
       this.map.setCollisionBetween(1, 100000, true, 'houses');
       this.map.setCollisionBetween(1, 100000, true, 'decoration');
 
-      // Add the sprite player to
+      // Add the sprite player to the map
       this.player = this.game.add.sprite(300, 200, 'player');
 
+      // Enable physics for the player
       this.game.physics.arcade.enable(this.player);
 
+      // Define the animations for the keypresses.
       this.player.animations.add('down', [0, 1, 2], 10, true);
       this.player.animations.add('left', [12, 13, 14], 10, true)
       this.player.animations.add('right', [24, 25, 26], 10, true)
       this.player.animations.add('up', [36, 37, 38], 10, true)
 
+      // Collide the player with the world's limits.
       this.player.body.collideWorldBounds = true;
 
+      // Add the sprite antidote
+      this.antidote = this.game.add.sprite(30, 180, 'antidote');
+      this.game.physics.arcade.enable(this.antidote);
+
+      // Create cursor keys.
       this.cursors = this.game.input.keyboard.createCursorKeys();
+    }
+
+
+    printInfo(first: Phaser.Sprite, second: Phaser.Sprite) {
+      if (this.antidoteCache === false) {
+        // TODO: Show information (modal, etc..)
+        this.antidoteCache = true;
+      }
     }
 
 
     // hook run in each cycle of the game loop. Logic here.
     update() {
         this.game.input.update();
-
-        this.game.physics.arcade.collide(this.player, this.water);
-        this.game.physics.arcade.collide(this.player, this.houses);
-        this.game.physics.arcade.collide(this.player, this.decoration);
-
 
         this.player.body.velocity.x = 0;
         this.player.body.velocity.y = 0;
@@ -117,6 +134,15 @@ module Portfolio.State {
           this.player.animations.stop();
           this.player.frame = 1;
         }
+
+
+        this.game.physics.arcade.collide(this.player, this.water);
+        this.game.physics.arcade.collide(this.player, this.houses);
+        this.game.physics.arcade.collide(this.player, this.decoration);
+
+        const antidote = this.game.physics.arcade.overlap(this.player, this.antidote, this.printInfo, null, this);
+        if (!antidote)
+          this.antidoteCache = false;
 
 
 

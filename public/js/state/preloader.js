@@ -22,6 +22,10 @@ var Portfolio;
                 this.game.load.image('bluetown', 'assets/images/BlueTownv2_byLunarea.png');
                 this.game.load.image('markerpreset', 'assets/images/Market-Preset-byLunarea.png');
                 this.game.load.image('pathandobjects', 'assets/images/PathAndObjects.png');
+                this.game.load.image('antidote', 'assets/images/I_Antidote.png');
+                this.game.load.image('book', 'assets/images/I_Book.png');
+                this.game.load.image('feather', 'assets/images/I_Feather01.png');
+                this.game.load.image('mymap', 'assets/images/I_Map.png');
                 this.game.load.spritesheet('player', 'assets/images/vx_chara03_a.png', 32, 48, 96);
             };
             Preloader.prototype.create = function () {
