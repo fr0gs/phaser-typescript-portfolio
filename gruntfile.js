@@ -25,6 +25,10 @@ module.exports = function (grunt) {
                         dest: 'public/'
                     },
                     {
+                      src: 'src/avgrund.css',
+                      dest: 'public/avgrund.css'
+                    },
+                    {
                         src: 'src/index.html',
                         dest: 'public/index.html'
                     },
@@ -33,7 +37,7 @@ module.exports = function (grunt) {
                         dest: 'public/vendor/phaser/phaser.js'
                     },
                     {
-                      src: 'bower_components/jquery.avgrund/jquery.avgrund.min.js',
+                      src: 'bower_components/jquery.avgrund/jquery.avgrund.js',
                       dest: 'public/vendor/jquery.avgrund/jquery.avgrund.js'
                     }
                 ]

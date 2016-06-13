@@ -100,7 +100,18 @@ module Portfolio.State {
 
     printInfo(first: Phaser.Sprite, second: Phaser.Sprite) {
       if (this.antidoteCache === false) {
-        // TODO: Show information (modal, etc..)
+        console.log('LOL');
+        	$(function() {
+        		$('div#show').avgrund({
+        			height: 200,
+        			holderClass: 'custom',
+        			showClose: true,
+        			showCloseText: 'Close',
+        			enableStackAnimation: true,
+        			onBlurContainer: '.container',
+        			template: '<p>So implement your design and place content here! If you want to close modal, please hit "Esc", click somewhere on the screen or use special button.</p>'
+        		});
+        	});
         this.antidoteCache = true;
       }
     }
