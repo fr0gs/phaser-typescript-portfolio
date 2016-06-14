@@ -98,20 +98,11 @@ module Portfolio.State {
     }
 
 
-    printInfo(first: Phaser.Sprite, second: Phaser.Sprite) {
+    // Show the About Me modal window.
+    showAbout(first: Phaser.Sprite, second: Phaser.Sprite) {
       if (this.antidoteCache === false) {
-        console.log('LOL');
-        	$(function() {
-        		$('div#show').avgrund({
-        			height: 200,
-        			holderClass: 'custom',
-        			showClose: true,
-        			showCloseText: 'Close',
-        			enableStackAnimation: true,
-        			onBlurContainer: '.container',
-        			template: '<p>So implement your design and place content here! If you want to close modal, please hit "Esc", click somewhere on the screen or use special button.</p>'
-        		});
-        	});
+    		let inst = $('[data-remodal-id=modal]').remodal();
+        inst.open();
         this.antidoteCache = true;
       }
     }
@@ -146,19 +137,17 @@ module Portfolio.State {
           this.player.frame = 1;
         }
 
-
+        // Make player not able to go over water, houses or decoration.
         this.game.physics.arcade.collide(this.player, this.water);
         this.game.physics.arcade.collide(this.player, this.houses);
         this.game.physics.arcade.collide(this.player, this.decoration);
 
-        const antidote = this.game.physics.arcade.overlap(this.player, this.antidote, this.printInfo, null, this);
+        // Check if
+        const antidote = this.game.physics.arcade.overlap(this.player, this.antidote, this.showAbout, null, this);
         if (!antidote)
           this.antidoteCache = false;
 
 
-
-        //this.game.physics.arcade.overlap(this.player, this.items, this.collect, null, this);
-        //this.game.physics.arcade.overlap(this.player, this.doors, this.enterDoor, null, this);
     }
   }
 }

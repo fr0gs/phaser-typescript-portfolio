@@ -25,8 +25,12 @@ module.exports = function (grunt) {
                         dest: 'public/'
                     },
                     {
-                      src: 'src/avgrund.css',
-                      dest: 'public/avgrund.css'
+                      src: 'bower_components/remodal/dist/remodal.css',
+                      dest: 'public/remodal.css'
+                    },
+                    {
+                      src: 'bower_components/remodal/dist/remodal-default-theme.css',
+                      dest: 'public/remodal-default-theme.css'
                     },
                     {
                         src: 'src/index.html',
@@ -37,8 +41,8 @@ module.exports = function (grunt) {
                         dest: 'public/vendor/phaser/phaser.js'
                     },
                     {
-                      src: 'bower_components/jquery.avgrund/jquery.avgrund.js',
-                      dest: 'public/vendor/jquery.avgrund/jquery.avgrund.js'
+                      src: 'bower_components/remodal/dist/remodal.min.js',
+                      dest: 'public/vendor/remodal/remodal.min.js'
                     }
                 ]
             }

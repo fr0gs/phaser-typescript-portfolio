@@ -54,20 +54,10 @@ var Portfolio;
                 this.game.physics.arcade.enable(this.antidote);
                 this.cursors = this.game.input.keyboard.createCursorKeys();
             };
-            Game.prototype.printInfo = function (first, second) {
+            Game.prototype.showAbout = function (first, second) {
                 if (this.antidoteCache === false) {
-                    console.log('LOL');
-                    $(function () {
-                        $('div#show').avgrund({
-                            height: 200,
-                            holderClass: 'custom',
-                            showClose: true,
-                            showCloseText: 'Close',
-                            enableStackAnimation: true,
-                            onBlurContainer: '.container',
-                            template: '<p>So implement your design and place content here! If you want to close modal, please hit "Esc", click somewhere on the screen or use special button.</p>'
-                        });
-                    });
+                    var inst = $('[data-remodal-id=modal]').remodal();
+                    inst.open();
                     this.antidoteCache = true;
                 }
             };
@@ -98,7 +88,7 @@ var Portfolio;
                 this.game.physics.arcade.collide(this.player, this.water);
                 this.game.physics.arcade.collide(this.player, this.houses);
                 this.game.physics.arcade.collide(this.player, this.decoration);
-                var antidote = this.game.physics.arcade.overlap(this.player, this.antidote, this.printInfo, null, this);
+                var antidote = this.game.physics.arcade.overlap(this.player, this.antidote, this.showAbout, null, this);
                 if (!antidote)
                     this.antidoteCache = false;
             };
