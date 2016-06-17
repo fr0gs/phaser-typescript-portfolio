@@ -37,12 +37,32 @@ module.exports = function (grunt) {
                         dest: 'public/index.html'
                     },
                     {
+                      src: 'bower_components/jquery/dist/jquery.min.js',
+                      dest: 'public/vendor/jquery/jquery.min.js'
+                    },
+                    {
                         src: 'bower_components/phaser/build/custom/phaser-arcade-physics.js',
                         dest: 'public/vendor/phaser/phaser.js'
                     },
                     {
                       src: 'bower_components/remodal/dist/remodal.min.js',
                       dest: 'public/vendor/remodal/remodal.min.js'
+                    },
+                    {
+                      src: 'node_modules/rpgui/rpgui.min.css',
+                      dest: 'public/rpgui.min.css'
+                    },
+                    {
+                      src: 'node_modules/rpgui/rpgui.min.js',
+                      dest: 'public/vendor/rpgui/rpgui.min.js'
+                    },
+                    {
+                      expand: true,
+                      cwd: 'node_modules/rpgui',
+                      src: [
+                          'img/**'
+                      ],
+                      dest: 'public/'
                     }
                 ]
             }
