@@ -56,8 +56,6 @@ var Portfolio;
             };
             Game.prototype.showAbout = function (first, second) {
                 if (this.antidoteCache === false) {
-                    var inst = $('[data-remodal-id=modal]').remodal();
-                    inst.open();
                     this.antidoteCache = true;
                 }
             };

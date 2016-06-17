@@ -101,6 +101,7 @@ module Portfolio.State {
     // Show the About Me modal window.
     showAbout(first: Phaser.Sprite, second: Phaser.Sprite) {
       if (this.antidoteCache === false) {
+        
         this.antidoteCache = true;
       }
     }

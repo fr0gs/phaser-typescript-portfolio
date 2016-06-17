@@ -24,7 +24,6 @@
   ],
   "dependencies": {
     "phaser": "~2.4.4",
-    "remodal": "^1.0.7",
     "jquery": "*"
   }
 }

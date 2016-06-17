@@ -29,6 +29,10 @@ module.exports = function (grunt) {
                         dest: 'public/index.html'
                     },
                     {
+                      src: 'src/style.css',
+                      dest: 'public/style.css'
+                    },
+                    {
                       src: 'bower_components/jquery/dist/jquery.min.js',
                       dest: 'public/vendor/jquery/jquery.min.js'
                     },
