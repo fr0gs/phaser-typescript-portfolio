@@ -25,14 +25,6 @@ module.exports = function (grunt) {
                         dest: 'public/'
                     },
                     {
-                      src: 'bower_components/remodal/dist/remodal.css',
-                      dest: 'public/remodal.css'
-                    },
-                    {
-                      src: 'bower_components/remodal/dist/remodal-default-theme.css',
-                      dest: 'public/remodal-default-theme.css'
-                    },
-                    {
                         src: 'src/index.html',
                         dest: 'public/index.html'
                     },
@@ -45,12 +37,8 @@ module.exports = function (grunt) {
                         dest: 'public/vendor/phaser/phaser.js'
                     },
                     {
-                      src: 'bower_components/remodal/dist/remodal.min.js',
-                      dest: 'public/vendor/remodal/remodal.min.js'
-                    },
-                    {
-                      src: 'node_modules/rpgui/rpgui.min.css',
-                      dest: 'public/rpgui.min.css'
+                      src: 'node_modules/rpgui/rpgui.css',
+                      dest: 'public/rpgui.css'
                     },
                     {
                       src: 'node_modules/rpgui/rpgui.min.js',

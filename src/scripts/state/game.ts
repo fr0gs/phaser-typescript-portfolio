@@ -101,8 +101,6 @@ module Portfolio.State {
     // Show the About Me modal window.
     showAbout(first: Phaser.Sprite, second: Phaser.Sprite) {
       if (this.antidoteCache === false) {
-    		let inst = $('[data-remodal-id=modal]').remodal();
-        inst.open();
         this.antidoteCache = true;
       }
     }
