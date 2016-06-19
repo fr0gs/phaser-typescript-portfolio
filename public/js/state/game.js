@@ -13,6 +13,7 @@ var Portfolio;
                 _super.apply(this, arguments);
             }
             Game.prototype.create = function () {
+                this.GUI = new Portfolio.Gui.Gui();
                 this.antidoteCache = false;
                 this.map = this.game.add.tilemap('portfolio');
                 this.map.addTilesetImage('BlueTownv2_byLunarea', 'bluetown');
@@ -55,7 +56,15 @@ var Portfolio;
                 this.cursors = this.game.input.keyboard.createCursorKeys();
             };
             Game.prototype.showAbout = function (first, second) {
+                var _this = this;
                 if (this.antidoteCache === false) {
+                    EZGUI.renderer = this.game.renderer;
+                    EZGUI.Theme.load(['assets/kenney-theme/kenney-theme.json'], function () {
+                        var guiContainer = EZGUI.create(_this.GUI.aboutScreen, 'kenney');
+                        EZGUI.components.btn1.on('click', function (event) {
+                            console.log('clicked', event);
+                        });
+                    });
                     this.antidoteCache = true;
                 }
             };

@@ -55,6 +55,26 @@ module.exports = function (grunt) {
                           'img/**'
                       ],
                       dest: 'public/'
+                    },
+                    {
+                      src: 'bower_components/ezgui/dist/EZGUI.js',
+                      dest: 'public/vendor/ezgui/EZGUI.js'
+                    },
+                    {
+                      src: 'bower_components/ezgui/dist/EZGUI.js.map',
+                      dest: 'public/vendor/ezgui/EZGUI.js.map'
+                    },
+                    {
+                      src: 'bower_components/ezgui/dist/phaser-compat-2.4.js',
+                      dest: 'public/vendor/ezgui/phaser-compat-2.4.js'
+                    },
+                    {
+                      expand: true,
+                      cwd: 'bower_components/ezgui',
+                      src: [
+                          'assets/**'
+                      ],
+                      dest: 'public/'
                     }
                 ]
             }

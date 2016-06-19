@@ -23,8 +23,11 @@ module Portfolio.State {
     decoration: Phaser.TilemapLayer;
     cursors: Phaser.CursorKeys;
     antidoteCache: boolean;
+    GUI: Gui.Gui;
 
     create() {
+      this.GUI = new Gui.Gui();
+
       this.antidoteCache = false;
 
       // load the tilemap information previously preloaded.
@@ -101,7 +104,14 @@ module Portfolio.State {
     // Show the About Me modal window.
     showAbout(first: Phaser.Sprite, second: Phaser.Sprite) {
       if (this.antidoteCache === false) {
-        
+        EZGUI.renderer = this.game.renderer;
+
+        EZGUI.Theme.load(['assets/kenney-theme/kenney-theme.json'], () => {
+          let guiContainer = EZGUI.create(this.GUI.aboutScreen, 'kenney');
+          EZGUI.components.btn1.on('click', (event: any) => {
+            console.log('clicked', event);
+          });
+        });
         this.antidoteCache = true;
       }
     }

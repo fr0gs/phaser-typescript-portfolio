@@ -24,6 +24,7 @@
   ],
   "dependencies": {
     "phaser": "~2.4.4",
-    "jquery": "*"
+    "jquery": "*",
+    "ezgui": "*"
   }
 }

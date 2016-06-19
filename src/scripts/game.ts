@@ -1,5 +1,6 @@
 /// <reference path="../refs.d.ts" />
 /// <reference path="../jquery.d.ts" />
+/// <reference path="../EZGUI.d.ts" />
 
 module Portfolio {
   export class Game extends Phaser.Game {
