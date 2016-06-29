@@ -37,7 +37,7 @@ module Portfolio.Gui {
                     height: 50,
                     layout: [3, null],
                     children: [
-                			{ id: 'btnClose', text: 'Close', component: 'Button', position: { x: 5, y: 5 }, width: 60, height: 40 },
+                		  { id: 'btnClose', text: 'Close', component: 'Button', position: { x: 5, y: 5 }, width: 60, height: 40 },
                 			{ id: 'btnFullstack', text: 'Fullstack Developer', component: 'Button', position: 'center', width: 200, height: 40 },
                 			null
                     ]
@@ -55,7 +55,7 @@ module Portfolio.Gui {
                         { id: 'misc', text: 'Misc', component: 'Button', skin: 'hListItem', position: 'center', width: 430, height: 130 }
                       ]
                   }
-                ]  
+                ]
             }
         }
     }

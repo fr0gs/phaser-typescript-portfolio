@@ -60,7 +60,14 @@ var Portfolio;
                 if (this.antidoteCache === false) {
                     EZGUI.renderer = this.game.renderer;
                     EZGUI.Theme.load(['assets/kenney-theme/kenney-theme.json'], function () {
-                        var guiContainer = EZGUI.create(_this.GUI.aboutScreen, 'kenney');
+                        var aboutScreen = EZGUI.create(_this.GUI.aboutScreen, 'kenney');
+                        aboutScreen.on('click', function () {
+                            console.log("asdadadad");
+                        });
+                        EZGUI.components.btnFullstack.on('click', function () {
+                            console.log("Close clicked!");
+                            aboutScreen.visible = false;
+                        });
                     });
                     this.antidoteCache = true;
                 }

@@ -107,10 +107,12 @@ module Portfolio.State {
         EZGUI.renderer = this.game.renderer;
 
         EZGUI.Theme.load(['assets/kenney-theme/kenney-theme.json'], () => {
-          let guiContainer = EZGUI.create(this.GUI.aboutScreen, 'kenney');
-          //EZGUI.components.btn1.on('click', (event: any) => {
-          //  console.log('clicked', event);
-          //});
+          let aboutScreen = EZGUI.create(this.GUI.aboutScreen, 'kenney');
+
+          EZGUI.components.btnClose.on('click', () => {
+            console.log("Close clicked!");
+            aboutScreen.visible = false;
+          });
         });
         this.antidoteCache = true;
       }
