@@ -108,9 +108,9 @@ module Portfolio.State {
 
         EZGUI.Theme.load(['assets/kenney-theme/kenney-theme.json'], () => {
           let guiContainer = EZGUI.create(this.GUI.aboutScreen, 'kenney');
-          EZGUI.components.btn1.on('click', (event: any) => {
-            console.log('clicked', event);
-          });
+          //EZGUI.components.btn1.on('click', (event: any) => {
+          //  console.log('clicked', event);
+          //});
         });
         this.antidoteCache = true;
       }

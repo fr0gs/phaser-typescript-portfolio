@@ -61,9 +61,6 @@ var Portfolio;
                     EZGUI.renderer = this.game.renderer;
                     EZGUI.Theme.load(['assets/kenney-theme/kenney-theme.json'], function () {
                         var guiContainer = EZGUI.create(_this.GUI.aboutScreen, 'kenney');
-                        EZGUI.components.btn1.on('click', function (event) {
-                            console.log('clicked', event);
-                        });
                     });
                     this.antidoteCache = true;
                 }
