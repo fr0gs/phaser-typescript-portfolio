@@ -79,9 +79,9 @@ module Portfolio.Gui {
                   height: 50,
                   layout: [3, null],
                   children: [
-                    { id: 'btnCloseFrontend', text: 'Close', component: 'Button', position: { x: 5, y: 5 }, width: 60, height: 40 },
+                    { id: 'btnBackFrontend', text: 'Back', component: 'Button', position: { x: 8, y: 0}, width: 60, height: 40 },
                     null,
-                    null
+                    { id: 'btnCloseFrontend', text: 'Close', component: 'Button', position: 'right', width: 60, height: 40 },
                   ]
                 },
                 {

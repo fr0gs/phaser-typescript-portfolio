@@ -119,6 +119,11 @@ module Portfolio.State {
             frontendScreen.visible = false;
           });
 
+          EZGUI.components.btnBackFrontend.on('click', () => {
+            frontendScreen.visible = false;
+            aboutScreen.visible = true;
+          });
+
           EZGUI.components.frontend.on('click', () => {
             aboutScreen.visible = false;
             frontendScreen.visible = true;
