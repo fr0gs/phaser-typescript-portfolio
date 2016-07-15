@@ -108,11 +108,28 @@ module Portfolio.State {
 
         EZGUI.Theme.load(['assets/kenney-theme/kenney-theme.json'], () => {
           let aboutScreen = EZGUI.create(this.GUI.aboutScreen, 'kenney');
+          let frontendScreen = EZGUI.create(this.GUI.frontendScreen, 'kenney');
+          frontendScreen.visible = false;
 
           EZGUI.components.btnClose.on('click', () => {
-            console.log("Close clicked!");
             aboutScreen.visible = false;
           });
+
+          EZGUI.components.btnCloseFrontend.on('click', () => {
+            frontendScreen.visible = false;
+          });
+
+          EZGUI.components.frontend.on('click', () => {
+            aboutScreen.visible = false;
+            frontendScreen.visible = true;
+          });
+
+          this.game.input.keyboard.onDownCallback = (e) {
+            if (e.keyCode === 27) {
+              aboutScreen.visible = false;
+              frontendScreen.visible = false;
+            }
+          }
         });
         this.antidoteCache = true;
       }
@@ -127,19 +144,19 @@ module Portfolio.State {
         this.player.body.velocity.y = 0;
 
         if (this.cursors.down.isDown) {
-          this.player.body.velocity.y = 150;
+          this.player.body.velocity.y = 100;
           this.player.animations.play('down', 1, true);
         }
         else if (this.cursors.up.isDown) {
-          this.player.body.velocity.y = -150;
+          this.player.body.velocity.y = -100;
           this.player.animations.play('up', 1, true);
         }
         else if (this.cursors.left.isDown) {
-          this.player.body.velocity.x = -150;
+          this.player.body.velocity.x = -100;
           this.player.animations.play('left', 1, true);
         }
         else if (this.cursors.right.isDown) {
-          this.player.body.velocity.x = 150;
+          this.player.body.velocity.x = 100;
           this.player.animations.play('right', 1, true);
         }
         else {
@@ -157,8 +174,6 @@ module Portfolio.State {
         const antidote = this.game.physics.arcade.overlap(this.player, this.antidote, this.showAbout, null, this);
         if (!antidote)
           this.antidoteCache = false;
-
-
     }
   }
 }

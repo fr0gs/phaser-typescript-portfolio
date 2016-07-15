@@ -29,8 +29,6 @@ module Portfolio.Gui {
                   {
                     component: 'Layout',
 
-                    z: 1, //the Z index allow to bring the navigation to the top so it can receive events (this is a workaround to the way PIXI handles events)
-
                     padding: 0,
                     position: { x: 0, y: 0 },
                     width: 440,
@@ -50,12 +48,57 @@ module Portfolio.Gui {
                       height: 400,
                       layout: [1, 3],
                       children: [
-                        { id: 'frontend', text: 'Frontend', component: 'Button', skin: 'hListItem', position: 'center', width: 430, height: 130 },
+                        { id: 'frontend', text: 'Frontend', component: 'Button', z: 1, skin: 'hListItem', position: 'center', width: 430, height: 130 },
                         { id: 'backend', text: 'Backend', component: 'Button', skin: 'hListItem', position: 'center', width: 430, height: 130 },
                         { id: 'misc', text: 'Misc', component: 'Button', skin: 'hListItem', position: 'center', width: 430, height: 130 }
                       ]
                   }
                 ]
+            }
+            this.frontendScreen = {
+              id: 'frontendScreen',
+              component: 'Window',
+              header: { id: 'frontendTitle', skin: 'blueheader', position: { x: 0, y: 0 }, height: 50, text: 'Frontend Skills' },
+              draggable: true,
+
+              //This is the padding space from the component borders
+              padding: 0,
+
+              //component position relative to parent. In this case compred to the game's div.
+              position: { x: 100, y: 100 },
+
+              width: 450,
+              height: 500,
+              children: [
+                {
+                  component: 'Layout',
+
+                  padding: 0,
+                  position: { x: 0, y: 0 },
+                  width: 440,
+                  height: 50,
+                  layout: [3, null],
+                  children: [
+                    { id: 'btnCloseFrontend', text: 'Close', component: 'Button', position: { x: 5, y: 5 }, width: 60, height: 40 },
+                    null,
+                    null
+                  ]
+                },
+                {
+                    id: 'frontendList',
+                    component: 'List',
+                    position: { x: 5, y: 50 },
+                    width: 440,
+                    height: 400,
+                    layout: [1, 5],
+                    children: [
+                      { id: 'html', text: 'HTML5', component: 'Button', skin: 'hListItem', position: 'center', width: 430, height: 75 },
+                      { id: 'css', text: 'CSS3', component: 'Button', skin: 'hListItem', position: 'center', width: 430, height: 75 },
+                      { id: 'bootstrap', text: 'Bootstrap', component: 'Button', skin: 'hListItem', position: 'center', width: 430, height: 75 },
+                      { id: 'languages', text: 'Javascript, Coffeescript, Typescript', component: 'Button', skin: 'hListItem', position: 'center', width: 430, height: 75 },
+                      { id: 'frameworks', text: 'Frameworks: Ember, React, React Native', component: 'Button', skin: 'hListItem', position: 'center', width: 430, height: 75 }
+                    ]
+                }
             }
         }
     }
