@@ -109,24 +109,67 @@ module Portfolio.State {
         EZGUI.Theme.load(['assets/kenney-theme/kenney-theme.json'], () => {
           let aboutScreen = EZGUI.create(this.GUI.aboutScreen, 'kenney');
           let frontendScreen = EZGUI.create(this.GUI.frontendScreen, 'kenney');
-          frontendScreen.visible = false;
+          let backendScreen = EZGUI.create(this.GUI.backendScreen, 'kenney');
+          let miscScreen = EZGUI.create(this.GUI.miscScreen, 'kenney');
 
+          frontendScreen.visible = false;
+          backendScreen.visible = false;
+          miscScreen.visible = false;
+
+          // Close the about screen
           EZGUI.components.btnClose.on('click', () => {
             aboutScreen.visible = false;
           });
 
+          // Close frontend screen
           EZGUI.components.btnCloseFrontend.on('click', () => {
             frontendScreen.visible = false;
           });
 
+          // Close backend screen
+          EZGUI.components.btnCloseBackend.on('click', () => {
+            backendScreen.visible = false;
+          });
+
+          // Close misc screen
+          EZGUI.components.btnCloseMisc.on('click', () => {
+            miscScreen.visible = false;
+          });
+
+          // Go back to about screen from frontend screen
           EZGUI.components.btnBackFrontend.on('click', () => {
             frontendScreen.visible = false;
             aboutScreen.visible = true;
           });
 
+          // Go back to about screen from backend screen
+          EZGUI.components.btnBackBackend.on('click', () => {
+            backendScreen.visible = false;
+            aboutScreen.visible = true;
+          });
+
+          // Go back to about screen from misc screen
+          EZGUI.components.btnBackMisc.on('click', () => {
+            misc.visible = false;
+            aboutScreen.visible = true;
+          });
+
+          // Go to frontend screen from about screen
           EZGUI.components.frontend.on('click', () => {
             aboutScreen.visible = false;
             frontendScreen.visible = true;
+          });
+
+          // Go to backend screen from about screen
+          EZGUI.components.backend.on('click', () => {
+            aboutScreen.visible = false;
+            backendScreen.visible = true;
+          });
+
+          // Go to misc screen from about screen
+          EZGUI.components.misc.on('click', () => {
+            aboutScreen.visible = false;
+            miscScreen.visible = true;
           });
 
           this.game.input.keyboard.onDownCallback = (e) {
