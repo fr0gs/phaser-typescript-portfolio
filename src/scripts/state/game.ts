@@ -107,10 +107,10 @@ module Portfolio.State {
         EZGUI.renderer = this.game.renderer;
 
         EZGUI.Theme.load(['assets/kenney-theme/kenney-theme.json'], () => {
-          let aboutScreen = EZGUI.create(this.GUI.aboutScreen, 'kenney');
-          let frontendScreen = EZGUI.create(this.GUI.frontendScreen, 'kenney');
-          let backendScreen = EZGUI.create(this.GUI.backendScreen, 'kenney');
-          let miscScreen = EZGUI.create(this.GUI.miscScreen, 'kenney');
+          let aboutScreen = EZGUI.create(this.GUI.aboutScreen, 'metalworks');
+          let frontendScreen = EZGUI.create(this.GUI.frontendScreen, 'metalworks');
+          let backendScreen = EZGUI.create(this.GUI.backendScreen, 'metalworks');
+          let miscScreen = EZGUI.create(this.GUI.miscScreen, 'metalworks');
 
           frontendScreen.visible = false;
           backendScreen.visible = false;
