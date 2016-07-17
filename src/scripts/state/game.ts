@@ -6,6 +6,7 @@ module Portfolio.State {
   export class Game extends Phaser.State {
     player: Phaser.Sprite;
     antidote: Phaser.Sprite;
+    feather: Phaser.Sprite;
     book: Phaser.Sprite;
     feather: Phaser.Sprite;
     mymap: Phaser.Sprite;
@@ -23,12 +24,15 @@ module Portfolio.State {
     decoration: Phaser.TilemapLayer;
     cursors: Phaser.CursorKeys;
     antidoteCache: boolean;
+    featherCache: boolean;
     GUI: Gui.Gui;
 
     create() {
       this.GUI = new Gui.Gui();
 
+      // booleans to detect collision with objects/player.
       this.antidoteCache = false;
+      this.featherCache = false;
 
       // load the tilemap information previously preloaded.
       this.map = this.game.add.tilemap('portfolio');
@@ -96,6 +100,10 @@ module Portfolio.State {
       this.antidote = this.game.add.sprite(30, 180, 'antidote');
       this.game.physics.arcade.enable(this.antidote);
 
+      //Add the sprite feather
+      this.feather = this.game.add.sprite(230, 400, 'feather');
+      this.game.physics.arcade.enable(this.feather);
+
       // Create cursor keys.
       this.cursors = this.game.input.keyboard.createCursorKeys();
     }
@@ -106,7 +114,7 @@ module Portfolio.State {
       if (this.antidoteCache === false) {
         EZGUI.renderer = this.game.renderer;
 
-        EZGUI.Theme.load(['assets/kenney-theme/kenney-theme.json'], () => {
+        EZGUI.Theme.load(['assets/metalworks-theme/metalworks-theme.json'], () => {
           let aboutScreen = EZGUI.create(this.GUI.aboutScreen, 'metalworks');
           let frontendScreen = EZGUI.create(this.GUI.frontendScreen, 'metalworks');
           let backendScreen = EZGUI.create(this.GUI.backendScreen, 'metalworks');
@@ -150,7 +158,7 @@ module Portfolio.State {
 
           // Go back to about screen from misc screen
           EZGUI.components.btnBackMisc.on('click', () => {
-            misc.visible = false;
+            miscScreen.visible = false;
             aboutScreen.visible = true;
           });
 
@@ -172,14 +180,37 @@ module Portfolio.State {
             miscScreen.visible = true;
           });
 
-          this.game.input.keyboard.onDownCallback = (e) {
+          this.game.input.keyboard.onDownCallback = (e) => {
             if (e.keyCode === 27) {
               aboutScreen.visible = false;
               frontendScreen.visible = false;
+              backendScreen.visible = false;
+              miscScreen.visible = false;
             }
           }
         });
         this.antidoteCache = true;
+      }
+    }
+
+    // Show the conacts page.
+    showContact(first: Phaser.Sprite, second: Phaser.Sprite) {
+      if (this.featherCache === false) {
+        EZGUI.renderer = this.game.renderer;
+        EZGUI.Theme.load(['assets/metalworks-theme/metalworks-theme.json'], () => {
+          let contactScreen = EZGUI.create(this.GUI.contactScreen, 'metalworks');
+
+          EZGUI.components.btnCloseContact.on('click', () => {
+            contactScreen.visible = false;
+          });
+
+          this.game.input.keyboard.onDownCallback = (e) => {
+            if (e.keyCode === 27) {
+              contactScreen.visible = false;
+            }
+          }
+        }
+        this.featherCache = true;
       }
     }
 
@@ -208,7 +239,7 @@ module Portfolio.State {
           this.player.animations.play('right', 1, true);
         }
         else {
-          //  Stand still
+          // Stand still
           this.player.animations.stop();
           this.player.frame = 1;
         }
@@ -218,10 +249,14 @@ module Portfolio.State {
         this.game.physics.arcade.collide(this.player, this.houses);
         this.game.physics.arcade.collide(this.player, this.decoration);
 
-        // Check if
+        // Check if the player overlaps with the antidote sprite and call showAbout if they do.
         const antidote = this.game.physics.arcade.overlap(this.player, this.antidote, this.showAbout, null, this);
         if (!antidote)
           this.antidoteCache = false;
+
+        const feather = this.game.physics.arcade.overlap(this.player, this.feather, this.showContact, null, this);
+        if (!feather)
+          this.featherCache = false;
     }
   }
 }

@@ -23,7 +23,7 @@ module Portfolio.State {
 
           /*
            * Load assets needed to render the game. In this case the three tilesets that conform
-           * the tilemap. First argument is an arbitrary name to ID it, second is the path.
+           * the tilemap and object sprites. First argument is an arbitrary name to ID it, second is the path.
            */
           this.game.load.image('bluetown', 'assets/images/BlueTownv2_byLunarea.png');
           this.game.load.image('markerpreset', 'assets/images/Market-Preset-byLunarea.png');

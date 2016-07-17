@@ -10,7 +10,7 @@ module Portfolio.Gui {
           //this the component ID, EZGUI define those components: Window, Button, Checkbox, Slider, Radio...
           //but you can create your own components or extend existing
           component: 'Window',
-          header: { id: 'titlebar', skin: 'blueheader', position: { x: 0, y: 0 }, height: 50, text: 'Hello! I am Esteban :)' },
+          header: { id: 'titlebar', skin: 'Header', position: { x: 0, y: 0 }, height: 50, text: 'Hello! I am Esteban :)' },
           //when a header is defined, and the window is draggable,
           //the drag handler is set to the header
           draggable: true,
@@ -58,7 +58,7 @@ module Portfolio.Gui {
         this.frontendScreen = {
           id: 'frontendScreen',
           component: 'Window',
-          header: { id: 'frontendTitle', skin: 'blueheader', position: { x: 0, y: 0 }, height: 50, text: 'Frontend Skills' },
+          header: { id: 'frontendTitle', skin: 'Header', position: { x: 0, y: 0 }, height: 50, text: 'Frontend Skills' },
           draggable: true,
 
           //This is the padding space from the component borders
@@ -103,7 +103,7 @@ module Portfolio.Gui {
         this.backendScreen = {
           id: 'backendScreen',
           component: 'Window',
-          header: { id: 'backendTitle', skin: 'blueheader', position: { x: 0, y: 0 }, height: 50, text: 'Backend Skills' },
+          header: { id: 'backendTitle', skin: 'Header', position: { x: 0, y: 0 }, height: 50, text: 'Backend Skills' },
           draggable: true,
 
           //This is the padding space from the component borders
@@ -146,7 +146,7 @@ module Portfolio.Gui {
         this.miscScreen = {
           id: 'miscScreen',
           component: 'Window',
-          header: { id: 'miscTitle', skin: 'blueheader', position: { x: 0, y: 0 }, height: 50, text: 'General Skills' },
+          header: { id: 'miscTitle', skin: 'Header', position: { x: 0, y: 0 }, height: 50, text: 'General Skills' },
           draggable: true,
 
           //This is the padding space from the component borders
@@ -185,6 +185,93 @@ module Portfolio.Gui {
                   { id: 'methodologies', text: 'Methodologies: Scrum, Agile', component: 'Button', skin: 'hListItem', position: 'center', width: 430, height: 130 }
                 ]
             }
+        }
+        this.contactScreen = {
+          id: 'contactScreen',
+          component: 'Window',
+          header: { id: 'contactTitle', skin: 'Header', position: { x: 0, y: 0 }, height: 50, text: 'Contact' },
+          draggable: true,
+
+          //This is the padding space from the component borders
+          padding: 0,
+
+          //component position relative to parent. In this case compred to the game's div.
+          position: { x: 100, y: 100 },
+
+          width: 450,
+          height: 500,
+          children: [
+            {
+              component: 'Layout',
+
+              padding: 0,
+              position: { x: 0, y: 0 },
+              width: 450,
+              height: 50,
+              layout: [3, null],
+              children: [
+          		  { id: 'btnCloseContact', text: 'Close', component: 'Button', position: { x: 5, y: 5 }, width: 60, height: 40 },
+                null,
+                null
+              ]
+            },
+            {
+              component: 'Layout',
+
+              padding: 0,
+              position: { x: 0, y: 50 },
+              width: 450,
+              height: 100,
+              layout: [3, null],
+              children: [
+          		  null,
+                { id: 'github', text: 'Github', component: 'Button', position: 'center', width: 100, height: 40 },
+                null
+              ]
+            },
+            {
+              component: 'Layout',
+
+              padding: 0,
+              position: { x: 0, y: 150 },
+              width: 450,
+              height: 100,
+              layout: [3, null],
+              children: [
+                null,
+                { id: 'twitter', text: 'Twitter', component: 'Button', position: 'center', width: 100, height: 40 },
+                null
+              ]
+            },
+            {
+              component: 'Layout',
+
+              padding: 0,
+              position: { x: 0, y: 250 },
+              width: 450,
+              height: 100,
+              layout: [3, null],
+              children: [
+          		  null,
+                { id: 'email', text: 'Email', component: 'Button', position: 'center', width: 100, height: 40 },
+                null
+              ]
+            },
+            {
+              component: 'Layout',
+
+              padding: 0,
+              position: { x: 0, y: 350 },
+              width: 450,
+              height: 100,
+              layout: [3, null],
+              children: [
+          		  null,
+                { id: 'linkedin', text: 'Linkedin', component: 'Button', position: 'center', width: 100, height: 40 },
+                null
+              ]
+            }
+          ]
         }
     }
   }
