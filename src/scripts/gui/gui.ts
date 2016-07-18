@@ -258,7 +258,7 @@ module Portfolio.Gui {
               ]
             },
             {
-              component: 'Layout',
+	            component: 'Layout',
 
               padding: 0,
               position: { x: 0, y: 350 },

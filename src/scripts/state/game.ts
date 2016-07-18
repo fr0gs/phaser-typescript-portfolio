@@ -204,6 +204,43 @@ module Portfolio.State {
             contactScreen.visible = false;
           });
 
+          EZGUI.components.github.on('click', () => {
+            const win = window.open('https://github.com/fr0gs', '_blank');
+              if (win) {
+                  //Browser has allowed it to be opened
+                  win.focus();
+              } else {
+                  //Browser has blocked it
+                  alert('Please allow popups for this website');
+              }
+          });
+
+          EZGUI.components.twitter.on('click', () => {
+            const win = window.open('https://twitter.com/fro_g', '_blank');
+              if (win) {
+                  //Browser has allowed it to be opened
+                  win.focus();
+              } else {
+                  //Browser has blocked it
+                  alert('Please allow popups for this website');
+              }
+          });
+
+          EZGUI.components.email.on('click', () => {
+            window.location.href = "mailto:mail@example.org";
+          });
+
+          EZGUI.components.linkedin.on('click', () => {
+            const win = window.open('https://be.linkedin.com/in/estebansastre', '_blank');
+              if (win) {
+                  //Browser has allowed it to be opened
+                  win.focus();
+              } else {
+                  //Browser has blocked it
+                  alert('Please allow popups for this website');
+              }
+          });
+
           this.game.input.keyboard.onDownCallback = (e) => {
             if (e.keyCode === 27) {
               contactScreen.visible = false;
