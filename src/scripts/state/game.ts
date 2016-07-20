@@ -34,6 +34,7 @@ module Portfolio.State {
       this.antidoteCache = false;
       this.featherCache = false;
       this.bookCache = false;
+      this.mapCache = false;
 
       // load the tilemap information previously preloaded.
       this.map = this.game.add.tilemap('portfolio');
@@ -114,6 +115,12 @@ module Portfolio.State {
       this.book.inputEnabled = true;
       this.book.events.onInputDown.add(this.showBlog, this);
       this.game.physics.arcade.enable(this.book);
+
+      //Add the sprite map
+      this.map = this.game.add.sprite(600, 350, 'mymap');
+      this.map.inputEnabled = true;
+      this.map.events.onInputDown.add(this.showExperience, this);
+      this.game.physics.arcade.enable(this.map);
 
       // Create cursor keys.
       this.cursors = this.game.input.keyboard.createCursorKeys();
@@ -295,6 +302,28 @@ module Portfolio.State {
       this.bookCache = true;
     }
 
+    // Show the experience page.
+    showExperience(first: Phaser.Sprite, second: Phaser.Sprite) {
+      if (this.mapCache === false) {
+        EZGUI.renderer = this.game.renderer;
+
+        EZGUI.Theme.load(['assets/metalworks-theme/metalworks-theme.json'], () => {
+          let experienceScreen = EZGUI.create(this.GUI.experienceScreen, 'metalworks');
+
+          EZGUI.components.btnCloseExperience.on('click', () => {
+            experienceScreen.visible = false;
+          });
+
+          this.game.input.keyboard.onDownCallback = (e) => {
+            if (e.keyCode === 27) {
+              experienceScreen.visible = false;
+            }
+          }
+        }
+      }
+      this.mapCache = true;
+    }
+
 
     // hook run in each cycle of the game loop. Logic here.
     update() {
@@ -342,6 +371,10 @@ module Portfolio.State {
         const book = this.game.physics.arcade.overlap(this.player, this.book, this.showBlog, null, this);
         if (!book)
           this.bookCache = false;
+
+        const map = this.game.physics.arcade.overlap(this.player, this.map, this.showExperience, null, this);
+        if (!map)
+          this.mapCache = false;
     }
   }
 }
