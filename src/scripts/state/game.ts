@@ -33,6 +33,7 @@ module Portfolio.State {
       // booleans to detect collision with objects/player.
       this.antidoteCache = false;
       this.featherCache = false;
+      this.bookCache = false;
 
       // load the tilemap information previously preloaded.
       this.map = this.game.add.tilemap('portfolio');
@@ -96,13 +97,23 @@ module Portfolio.State {
       // Collide the player with the world's limits.
       this.player.body.collideWorldBounds = true;
 
-      // Add the sprite antidote
+      // Add the sprite antidote, make it react to clicks, enable physics on it.
       this.antidote = this.game.add.sprite(30, 180, 'antidote');
+      this.antidote.inputEnabled = true;
+      this.antidote.events.onInputDown.add(this.showAbout, this);
       this.game.physics.arcade.enable(this.antidote);
 
       //Add the sprite feather
       this.feather = this.game.add.sprite(230, 400, 'feather');
+      this.feather.inputEnabled = true;
+      this.feather.events.onInputDown.add(this.showContact, this);
       this.game.physics.arcade.enable(this.feather);
+
+      //Add the sprite book
+      this.book = this.game.add.sprite(500, 150, 'book');
+      this.book.inputEnabled = true;
+      this.book.events.onInputDown.add(this.showBlog, this);
+      this.game.physics.arcade.enable(this.book);
 
       // Create cursor keys.
       this.cursors = this.game.input.keyboard.createCursorKeys();
@@ -251,6 +262,39 @@ module Portfolio.State {
       }
     }
 
+    // Show the blog page.
+    showBlog(first: Phaser.Sprite, second: Phaser.Sprite) {
+      if (this.bookCache === false) {
+        EZGUI.renderer = this.game.renderer;
+
+        EZGUI.Theme.load(['assets/metalworks-theme/metalworks-theme.json'], () => {
+          let blogScreen = EZGUI.create(this.GUI.blogScreen, 'metalworks');
+
+          EZGUI.components.btnCloseBlog.on('click', () => {
+            blogScreen.visible = false;
+          });
+
+          EZGUI.components.blog.on('click', () => {
+            const win = window.open('http://estebansastre.com/blog/', '_blank');
+              if (win) {
+                  //Browser has allowed it to be opened
+                  win.focus();
+              } else {
+                  //Browser has blocked it
+                  alert('Please allow popups for this website');
+              }
+          });
+
+          this.game.input.keyboard.onDownCallback = (e) => {
+            if (e.keyCode === 27) {
+              blogScreen.visible = false;
+            }
+          }
+        }
+      }
+      this.bookCache = true;
+    }
+
 
     // hook run in each cycle of the game loop. Logic here.
     update() {
@@ -294,6 +338,10 @@ module Portfolio.State {
         const feather = this.game.physics.arcade.overlap(this.player, this.feather, this.showContact, null, this);
         if (!feather)
           this.featherCache = false;
+
+        const book = this.game.physics.arcade.overlap(this.player, this.book, this.showBlog, null, this);
+        if (!book)
+          this.bookCache = false;
     }
   }
 }

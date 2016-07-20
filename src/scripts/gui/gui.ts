@@ -16,7 +16,7 @@ module Portfolio.Gui {
           draggable: true,
 
           //This is the padding space from the component borders
-          padding: 0,
+          //padding: 0,
 
           //component position relative to parent. In this case compred to the game's div.
           position: { x: 100, y: 100 },
@@ -31,7 +31,7 @@ module Portfolio.Gui {
 
               padding: 0,
               position: { x: 0, y: 0 },
-              width: 440,
+              width: 450,
               height: 50,
               layout: [3, null],
               children: [
@@ -43,14 +43,14 @@ module Portfolio.Gui {
             {
                 id: 'mylist',
                 component: 'List',
-                position: { x: 5, y: 50 },
-                width: 440,
+                position: { x: 0, y: 50 },
+                width: 450,
                 height: 400,
                 layout: [1, 3],
                 children: [
-                  { id: 'frontend', text: 'Frontend', component: 'Button', z: 1, skin: 'hListItem', position: 'center', width: 430, height: 130 },
-                  { id: 'backend', text: 'Backend', component: 'Button', skin: 'hListItem', position: 'center', width: 430, height: 130 },
-                  { id: 'misc', text: 'Misc', component: 'Button', skin: 'hListItem', position: 'center', width: 430, height: 130 }
+                  { id: 'frontend', text: 'Frontend', component: 'Button', z: 1, skin: 'hListItem', position: 'center', width: 450, height: 130 },
+                  { id: 'backend', text: 'Backend', component: 'Button', skin: 'hListItem', position: 'center', width: 450, height: 130 },
+                  { id: 'misc', text: 'Misc', component: 'Button', skin: 'hListItem', position: 'center', width: 450, height: 130 }
                 ]
             }
           ]
@@ -271,6 +271,63 @@ module Portfolio.Gui {
                 null
               ]
             }
+          ]
+        },
+        this.blogScreen = {
+          id: 'blogScreen',
+          component: 'Window',
+          header: { id: 'blogTitle', skin: 'Header', position: { x: 0, y: 0 }, height: 50, text: 'Blog' },
+          draggable: true,
+
+          //This is the padding space from the component borders
+          padding: 0,
+
+          //component position relative to parent. In this case compred to the game's div.
+          position: { x: 150, y: 100 },
+
+          width: 450,
+          height: 500,
+          children: [
+            {
+              component: 'Layout',
+
+              padding: 0,
+              position: { x: 0, y: 0 },
+              width: 450,
+              height: 50,
+              layout: [3, null],
+              children: [
+          		  { id: 'btnCloseBlog', text: 'Close', component: 'Button', position: { x: 5, y: 5 }, width: 60, height: 40 },
+                null,
+                null
+              ]
+            },
+            {
+              component: 'Layout',
+
+              padding: 0,
+              position: { x: 0, y: 50 },
+              width: 450,
+              height: 350,
+              layout: [1, null],
+              children: [
+          		  { id: 'blog', text: 'Click here to see my blog!', component: 'Button', position: 'center', width: 450, height: 350 }
+              ]
+            },
+            {
+      		    text: 'Esteban Inc.',
+      		    font: {
+    		        size: '20px',
+    		        family: 'Arial',
+    		        color: '#fff'
+      		    },
+      		    component: 'Header',
+
+      		    position: { x: 0, y: 400},
+
+      		    width: 450,
+      		    height: 50
+        		}
           ]
         }
     }
