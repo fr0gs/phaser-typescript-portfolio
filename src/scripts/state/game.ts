@@ -91,9 +91,9 @@ module Portfolio.State {
 
       // Define the animations for the keypresses.
       this.player.animations.add('down', [0, 1, 2], 10, true);
-      this.player.animations.add('left', [12, 13, 14], 10, true)
-      this.player.animations.add('right', [24, 25, 26], 10, true)
-      this.player.animations.add('up', [36, 37, 38], 10, true)
+      this.player.animations.add('left', [12, 13, 14], 10, true);
+      this.player.animations.add('right', [24, 25, 26], 10, true);
+      this.player.animations.add('up', [36, 37, 38], 10, true);
 
       // Collide the player with the world's limits.
       this.player.body.collideWorldBounds = true;
@@ -207,8 +207,8 @@ module Portfolio.State {
             }
           }
         });
-        this.antidoteCache = true;
       }
+      this.antidoteCache = true;	
     }
 
     // Show the conacts page.
@@ -264,9 +264,9 @@ module Portfolio.State {
               contactScreen.visible = false;
             }
           }
-        }
-        this.featherCache = true;
+        });
       }
+      this.featherCache = true;
     }
 
     // Show the blog page.
@@ -284,20 +284,20 @@ module Portfolio.State {
           EZGUI.components.blog.on('click', () => {
             const win = window.open('http://estebansastre.com/blog/', '_blank');
               if (win) {
-                  //Browser has allowed it to be opened
-                  win.focus();
+		//Browser has allowed it to be opened
+                win.focus();
               } else {
-                  //Browser has blocked it
-                  alert('Please allow popups for this website');
+                //Browser has blocked it
+                alert('Please allow popups for this website');
               }
           });
-
+	    
           this.game.input.keyboard.onDownCallback = (e) => {
             if (e.keyCode === 27) {
               blogScreen.visible = false;
             }
           }
-        }
+        });
       }
       this.bookCache = true;
     }
@@ -319,7 +319,7 @@ module Portfolio.State {
               experienceScreen.visible = false;
             }
           }
-        }
+        });
       }
       this.mapCache = true;
     }
