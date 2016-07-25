@@ -17,28 +17,40 @@ module.exports = function (grunt) {
             dev: {
                 files: [
                     {
-                        expand: true,
-                        cwd: 'src',
-                        src: [
-                            'assets/**'
-                        ],
-                        dest: 'public/'
+                      expand: true,
+                      cwd: 'src',
+                      src: [
+                        'assets/**'
+                      ],
+                      dest: 'public/'
                     },
                     {
-                        src: 'src/index.html',
-                        dest: 'public/index.html'
+                      src: 'src/index.html',
+                      dest: 'public/index.html'
                     },
                     {
                       src: 'src/style.css',
                       dest: 'public/style.css'
                     },
+		    {
+		      src: 'node_modules/remodal/dist/remodal.css',
+		      dest: 'public/remodal.css'
+		    },
+		    {
+		      src: 'node_modules/remodal/dist/remodal-default-theme.css',
+		      dest: 'public/remodal-default-theme.css'
+		    },
+		    {
+		      src: 'node_modules/remodal/dist/remodal.min.js',
+		      dest: 'public/vendor/remodal/remodal.min.js'
+		    },		  		  
                     {
                       src: 'bower_components/jquery/dist/jquery.min.js',
                       dest: 'public/vendor/jquery/jquery.min.js'
                     },
                     {
-                        src: 'bower_components/phaser/build/custom/phaser-arcade-physics.js',
-                        dest: 'public/vendor/phaser/phaser.js'
+                      src: 'bower_components/phaser/build/custom/phaser-arcade-physics.js',
+                      dest: 'public/vendor/phaser/phaser.js'
                     },
                     {
                       src: 'node_modules/rpgui/rpgui.css',

@@ -9,16 +9,34 @@
       <!-- stylesheet includes -->
       <link rel="stylesheet" href="rpgui.css">
       <link rel="stylesheet" href="style.css">
+      <link rel="stylesheet" href="remodal.css">
+      <link rel="stylesheet" href="remodal-default-theme.css">
   </head>
   <body>
+
+    <div class="my-modal" data-remodal-id="modal">
+      <button data-remodal-action="close" class="remodal-close"></button>
+      <h1>About Me</h1>
+      <div class="personal-paragraph">
+	<img src="https://media.creativemornings.com/uploads/user/avatar/45309/small_profile-pic.jpg">      
+	<p>
+	  Hello! I am Esteban, a spanish frontend developer based in Belgium aiming to become
+	  a hardcore fullstack developer. I made this simple interactive curriculum for fun
+	  using the <strong>Tiled</strong> map editor, <strong>Phaser.js</strong> and <strong>TypeScript</strong>.
+	  Please use the <strong><i>arrow keys</i></strong> to move towards the items or if you feel
+	  lazy just click on them :)
+	</p>
+      </div>
+    </div>    
 
     <!-- Div element where the phaser game will be mounted -->
     <div class="portfolio"></div>
 
-
     <!-- jquery oh mother of all libs -->
     <script src="vendor/jquery/jquery.min.js"></script>
 
+    <!-- Remodal modal library -->
+    <script src="vendor/remodal/remodal.min.js"></script>    
 
     <!-- RPG like menus -->
     <script src="vendor/rpgui/rpgui.min.js"></script>

@@ -30,17 +30,17 @@ module Portfolio.State {
     create() {
       this.GUI = new Gui.Gui();
 
-      // booleans to detect collision with objects/player.
+      // Booleans to detect collision with objects/player.
       this.antidoteCache = false;
       this.featherCache = false;
       this.bookCache = false;
       this.mapCache = false;
 
-      // load the tilemap information previously preloaded.
+      // Load the tilemap information previously preloaded.
       this.map = this.game.add.tilemap('portfolio');
 
-      // add the tilesetimage previously loaded to the map.
-      // first argument must be the name of the tileset in tiled
+      // Add the tilesetimage previously loaded to the map.
+      // First argument must be the name of the tileset in tiled
       this.map.addTilesetImage('BlueTownv2_byLunarea', 'bluetown');
       this.map.addTilesetImage('Market-Preset-byLunarea', 'markerpreset');
       this.map.addTilesetImage('PathAndObjects', 'pathandobjects');
@@ -104,19 +104,19 @@ module Portfolio.State {
       this.antidote.events.onInputDown.add(this.showAbout, this);
       this.game.physics.arcade.enable(this.antidote);
 
-      //Add the sprite feather
+      // Add the sprite feather
       this.feather = this.game.add.sprite(230, 400, 'feather');
       this.feather.inputEnabled = true;
       this.feather.events.onInputDown.add(this.showContact, this);
       this.game.physics.arcade.enable(this.feather);
 
-      //Add the sprite book
+      // Add the sprite book
       this.book = this.game.add.sprite(500, 150, 'book');
       this.book.inputEnabled = true;
       this.book.events.onInputDown.add(this.showBlog, this);
       this.game.physics.arcade.enable(this.book);
 
-      //Add the sprite map
+      // Add the sprite map
       this.map = this.game.add.sprite(600, 350, 'mymap');
       this.map.inputEnabled = true;
       this.map.events.onInputDown.add(this.showExperience, this);
@@ -124,6 +124,11 @@ module Portfolio.State {
 
       // Create cursor keys.
       this.cursors = this.game.input.keyboard.createCursorKeys();
+
+      // Open the initiation modal.
+      let inst = $('[data-remodal-id=modal]').remodal();
+      inst.open();	          
+	
     }
 
 
@@ -207,8 +212,8 @@ module Portfolio.State {
             }
           }
         });
+      this.antidoteCache = true;	  
       }
-      this.antidoteCache = true;	
     }
 
     // Show the conacts page.
@@ -265,8 +270,8 @@ module Portfolio.State {
             }
           }
         });
+      this.featherCache = true;	  
       }
-      this.featherCache = true;
     }
 
     // Show the blog page.
@@ -298,13 +303,14 @@ module Portfolio.State {
             }
           }
         });
-      }
       this.bookCache = true;
+      }
     }
 
     // Show the experience page.
     showExperience(first: Phaser.Sprite, second: Phaser.Sprite) {
       if (this.mapCache === false) {
+	    
         EZGUI.renderer = this.game.renderer;
 
         EZGUI.Theme.load(['assets/metalworks-theme/metalworks-theme.json'], () => {
@@ -320,8 +326,8 @@ module Portfolio.State {
             }
           }
         });
+        this.mapCache = true;	  
       }
-      this.mapCache = true;
     }
 
 

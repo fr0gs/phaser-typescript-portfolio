@@ -2,3 +2,7 @@ body {
   margin: 0;
   background-color: #4488AA;
 }
+
+.personal-paragraph {
+  float: left;
+}
