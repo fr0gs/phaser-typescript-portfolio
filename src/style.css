@@ -3,6 +3,14 @@ body {
   background-color: #4488AA;
 }
 
-.personal-paragraph {
+.my-modal {
+  background-color: #BDB76B;
+}
+
+#profilepic {
   float: left;
+}
+
+.personal-text {
+  font-family: "Impact", sans-serif;
 }

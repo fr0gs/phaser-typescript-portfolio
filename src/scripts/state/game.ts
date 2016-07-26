@@ -340,19 +340,19 @@ module Portfolio.State {
 
         if (this.cursors.down.isDown) {
           this.player.body.velocity.y = 100;
-          this.player.animations.play('down', 1, true);
+          this.player.animations.play('down', 10, true);
         }
         else if (this.cursors.up.isDown) {
           this.player.body.velocity.y = -100;
-          this.player.animations.play('up', 1, true);
+          this.player.animations.play('up', 10, true);
         }
         else if (this.cursors.left.isDown) {
           this.player.body.velocity.x = -100;
-          this.player.animations.play('left', 1, true);
+          this.player.animations.play('left', 10, true);
         }
         else if (this.cursors.right.isDown) {
           this.player.body.velocity.x = 100;
-          this.player.animations.play('right', 1, true);
+          this.player.animations.play('right', 10, true);
         }
         else {
           // Stand still
