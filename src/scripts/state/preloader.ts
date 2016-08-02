@@ -7,6 +7,11 @@ module Portfolio.State {
       loadingBar: Entity.PreloadBar;
 
       preload() {
+    	  // Open the initiation modal.
+	  let inst = $('[data-remodal-id=modal]').remodal();
+	  inst.open();	          
+
+	  
           // Create the loading bar.
           this.loadingBar = new Entity.PreloadBar(this.game);
 

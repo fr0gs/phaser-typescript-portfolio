@@ -123,12 +123,7 @@ module Portfolio.State {
       this.game.physics.arcade.enable(this.map);
 
       // Create cursor keys.
-      this.cursors = this.game.input.keyboard.createCursorKeys();
-
-      // Open the initiation modal.
-      let inst = $('[data-remodal-id=modal]').remodal();
-      inst.open();	          
-	
+      this.cursors = this.game.input.keyboard.createCursorKeys();	
     }
 
 
