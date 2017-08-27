@@ -15,7 +15,7 @@ Boilerplate taken from https://github.com/cloakedninjas/phaser-typescript-boiler
 
 ## Building
 
-`grunt dev` for single build or `grunt watch` to compile as you make changes.
+`grunt dev --force` for single build or `grunt watch` to compile as you make changes.
 
 ## Running
 
