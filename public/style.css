@@ -1,0 +1,16 @@
+body {
+  margin: 0;
+  background-color: #4488AA;
+}
+
+.my-modal {
+  background-color: #BDB76B;
+}
+
+#profilepic {
+  float: left;
+}
+
+.personal-text {
+  font-family: "Impact", sans-serif;
+}
