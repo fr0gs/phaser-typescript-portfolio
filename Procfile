@@ -1,1 +1,1 @@
-web: ./node_modules/http-server/bin/http-server public/ -p 5000
+web: ./node_modules/http-server/bin/http-server public/ -p $PORT
